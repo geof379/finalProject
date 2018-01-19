@@ -1,4 +1,3 @@
-
 var firebase = require('firebase');
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 
@@ -18,23 +17,13 @@ var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function ever
 
 function blinkLED() { //function to start blinking
   if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-//    LED.writeSync(1); //set pin state to 1 (turn LED on)
-    firebase.database().ref("D").set("on");
+    LED.writeSync(1); //set pin state to 1 (turn LED on)
+    firebase.database().ref("blinkingled-52343").set({D:"on"});
   } else {
-  //  LED.writeSync(0); //set pin state to 0 (turn LED off)
-    firebase.database().ref("D").set("off");
+    LED.writeSync(0); //set pin state to 0 (turn LED off)
+    firebase.database().ref("blinkingled-52343").set({D:"off"});
  }
 }
-var i = 0;
-firebase.database().ref("D").on("value",function(snapshot){
-	console.log(i);
-	i++;
-	if(snapshot.val() === "on"){
-		LED.writeSync(1);
-	}else{
-		LED.writeSync(0);
-	}
-});
 
 function endBlink() { //function to stop blinking
   clearInterval(blinkInterval); // Stop blink intervals
@@ -43,4 +32,4 @@ function endBlink() { //function to stop blinking
 }
 
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
-
+console.log("yeah");

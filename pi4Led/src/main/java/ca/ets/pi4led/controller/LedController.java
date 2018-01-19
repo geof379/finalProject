@@ -21,7 +21,7 @@ public class LedController {
     public String light(){
         if(pin == null){
             GpioController gpio = GpioFactory.getInstance();
-            pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04,"MyLed", PinState.LOW);
+            pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01,"MyLed", PinState.LOW);
         }
         pin.toggle();
         return "OK";

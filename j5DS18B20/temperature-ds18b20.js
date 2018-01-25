@@ -11,7 +11,7 @@ board.on("ready", function() {
     controller: "DS18B20",
     pin: "GPIO17"
   });
-
+console.log(thermometer.celsius + "°C");
   thermometer.on("change", function() {
     console.log(this.celsius + "°C");
     // console.log("0x" + this.address.toString(16));

@@ -13,9 +13,11 @@ board.on('ready', function() {
 
   button.on('down', function() {
     led.on();
+    console.log("down");
   });
 
   button.on('up', function() {
     led.off();
+    console.log("up");
   });
 });

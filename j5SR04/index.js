@@ -12,6 +12,9 @@ board.on('ready', function() {
   });
 
   proximity.on("data", function() {
+
+
+
     console.log("cm: ", this.cm);
   });
 });

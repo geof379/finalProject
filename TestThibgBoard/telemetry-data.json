@@ -6,6 +6,6 @@
 "value2":{"temperature": 21, "humidity": 55.0, "active": false
 },
 "value3":{
-"temperature": 21, "humidity": 55.0, "active": false
+"temperature": 21, "humidity": 55.0, "active": true
 }
 }

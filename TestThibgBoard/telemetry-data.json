@@ -1,1 +1,11 @@
-{"temperature":21, "humidity":55.0, "active": false}
+{"value1":{
+  "temperature": 21,
+  "humidity": 55.0,
+  "active": false
+},
+"value2":{"temperature": 21, "humidity": 55.0, "active": false
+},
+"value3":{
+"temperature": 21, "humidity": 55.0, "active": false
+}
+}

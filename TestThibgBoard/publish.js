@@ -1,6 +1,6 @@
 var mqtt = require('mqtt');
 
-console.log('Connecting to: %s using access token: %s', process.env.THINGSBOARD_HOST, process.env.ACCESS_TOKEN);
+console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', 'DkiMfuhVrpaIWjdW5zbR');
 
 var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
     username: 'DkiMfuhVrpaIWjdW5zbR'
@@ -8,9 +8,12 @@ var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
 
 client.on('connect', function () {
     console.log('Client connected!');
-    client.publish('v1/devices/me/attributes', process.env.ATTRIBUTES);
-    console.log('Attributes published!');
-    client.publish('v1/devices/me/telemetry', process.env.TELEMETRY);
-    console.log('Telemetry published!');
+    var n = 0;
+    while(n<100){
+        client.publish('v1/devices/me/attributes', {"firmware_version":n, "serial_number":"SN-001"});
+        client.publish('v1/devices/me/telemetry', {"temperature":n, "humidity":53.0+n, "active": n%2===0});
+        console.log('Data published!');
+    }
+
     client.end();
 });

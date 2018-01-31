@@ -16,43 +16,23 @@ var sensor = {
     } ],
 
 };
-var n= 8;
+var n= 1;
 
-    client.on('connect', function () {
-        console.log('Client connected!');
+client.on('connect', function () {
+    console.log('Client connected!');
 
-
-    for (var a in sensor.sensors) {
+    while(true){
+        if(!client.connected){client.reconnect();}
+        for (var a in sensor.sensors) {
             var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
             sensor_data['temperature'] = b.temperature+n;
             sensor_data['humidity'] = b.humidity;
             console.log(JSON.stringify(sensor_data));
             client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
             client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
-            console.log('Data published!');n++;
+            console.log('Data published!');
+        }
+        client.end();
+        n++;
     }
-
-
-    for (var a in sensor.sensors) {
-            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
-            sensor_data['temperature'] = b.temperature+n;
-            sensor_data['humidity'] = b.humidity;
-            console.log(JSON.stringify(sensor_data));
-            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
-            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
-            console.log('Data published!');n++;
-    }
-     for (var a in sensor.sensors) {
-            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
-            sensor_data['temperature'] = b.temperature+n;
-            sensor_data['humidity'] = b.humidity;
-            console.log(JSON.stringify(sensor_data));
-            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
-            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
-            console.log('Data published!');n++;
-    }
-
-
-
-      //  client.end();
-    });
+});

@@ -13,7 +13,7 @@ client.on('connect', function () {
     var request = {
         method: "sendMsg",
         params: {
-            deviceId: "aa435e80-9fce-11e6-8080-808080808080",
+            deviceId: "d78540d0-0200-11e8-abe9-1d8d2edf4f93",
             timeout: 2000,
             oneway: false,
             body: {

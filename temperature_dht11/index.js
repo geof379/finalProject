@@ -26,8 +26,8 @@ client.on('connect', function () {
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
             console.log(sensor_data);
-            client.publish('v1/devices/me/attributes', sensor_data);
-            client.publish('v1/devices/me/telemetry',sensor_data,1);
+            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),1);
             console.log('Data published!');
         }
 

@@ -19,8 +19,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var gpio_state = {7: False, 11: False, 12: False, 13: False, 15: False, 16: False, 18: False, 22: False, 29: False,
-    31: False, 32: False, 33: False, 35: False, 36: False, 37: False, 38: False, 40: False};
+var gpio_state = {"7": "False"};
 
 var LED  = new Gpio(7, 'out');
 function getGpioStatus(){

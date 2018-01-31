@@ -27,4 +27,5 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
     console.log('response.topic: ' + topic);
     console.log('response.body: ' + message.toString());
+    client.publish(topic.replace('request', 'response'), '{"status":"ok"}');
 });

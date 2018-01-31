@@ -18,10 +18,7 @@ var sensor = {
 };
 var n = 1;
 client.subscribe('messages');
-while(n<100){
-    client.publish('messages', 'Current time is: ' + new Date());
-    n++;
-}
+
 
 client.on('message', function(topic, message) {
   for (var a in sensor.sensors) {
@@ -36,12 +33,15 @@ client.on('message', function(topic, message) {
           n++;
 
 
-      client.end();
+    
 });
 
 
 
 client.on('connect', function () {
     console.log('Client connected!');
-
+    while(n<100){
+        client.publish('messages', 'Current time is: ' + new Date());
+        n++;
+    }
 });

@@ -9,9 +9,15 @@ var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
 client.on('connect', function () {
     console.log('Client connected!');
     var n = 0;
+    var version = "1.0.";
+    var temperature = 0;
+    var humidity = 0;
     while(n<100){
-        client.publish('v1/devices/me/attributes', "{'firmware_version':"+n+", 'serial_number':'SN-001'}");
-        client.publish('v1/devices/me/telemetry', "{'temperature':"+n+", 'humidity':"+53.0+n+", 'active':"+ n%2===0+"}");
+        version += n;
+        temperature += n;
+        humidity += n;
+        client.publish('v1/devices/me/attributes', "{'firmware_version':"+version+", 'serial_number':'SN-001'}");
+        client.publish('v1/devices/me/telemetry', "{'temperature':"+temp+", 'humidity':"+humidity+", 'active':"+ n%2===0+"}");
         console.log('Data published!');
     }
 

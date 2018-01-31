@@ -34,4 +34,3 @@ function read() {
         console.log('Data published!');
     }
 }
-sensor.read();

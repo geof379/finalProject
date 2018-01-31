@@ -31,7 +31,7 @@ client.on('connect', function () {
         sensor.read();
     }, 2000);
 
-    client.end();
+    //client.end();
 });
 
 

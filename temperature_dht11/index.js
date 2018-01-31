@@ -32,6 +32,7 @@ while(true){
                         console.log('Data published!');
                 }
                 n++;
+                setTimeout(function(){},2000);
 }
 
 

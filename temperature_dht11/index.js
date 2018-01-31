@@ -15,13 +15,17 @@ var sensor = {
         pin: 18
     } ],
     read: function() {
+        console.log("before");
         for (var a in this.sensors) {
+            console.log("reading");
             var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
+            console.log("publishing");
             client.publish('v1/devices/me/telemetry', JSON.stringify(sensor_data));
             console.log('Data published!');
         }
+        console.log("after");
     }
 };
 client.on('connect', function () {

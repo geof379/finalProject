@@ -1,10 +1,10 @@
 var sensorLib = require("node-dht-sensor");
 var mqtt = require('mqtt');
 
-console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', 'DkiMfuhVrpaIWjdW5zbR');
+console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', '8v9od7LSarjmlorE9J4Y');
 
 var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
-   username: 'DkiMfuhVrpaIWjdW5zbR'
+   username: '8v9od7LSarjmlorE9J4Y'
 });
 
 var sensor_data = [];

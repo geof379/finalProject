@@ -23,11 +23,13 @@ client.on('connect', function () {
             var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
-            client.publish('v1/devices/me/telemetry', JSON.stringify(sensor_data));
+            console.log(JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/telemetry', JSON.stringify(sensor_data),1);
             console.log('Data published!');
         }
         console.log("after");
-    
+
 
 
     client.end();

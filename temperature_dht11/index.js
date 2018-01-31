@@ -30,7 +30,7 @@ client.on('connect', function () {
             client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data));
             console.log('Data published!');
         }
-        
+
         n++;
 
 });

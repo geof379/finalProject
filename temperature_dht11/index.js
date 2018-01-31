@@ -19,7 +19,7 @@ var sensor = {
             var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
-            console.log(JSON.Stringify(sensor_data));
+            console.log(sensor_data);
             //client.publish('v1/devices/me/telemetry', JSON.stringify(sensor_data));
             console.log('Data published!');
         }

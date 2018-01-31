@@ -23,17 +23,34 @@ var n= 8;
 
 
     for (var a in sensor.sensors) {
-                        var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
-                        sensor_data['temperature'] = b.temperature+n;
-                        sensor_data['humidity'] = b.humidity;
-                        console.log(JSON.stringify(sensor_data));
-                        client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
-                        client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
-                        console.log('Data published!');
-                }
-                n++;
+            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
+            sensor_data['temperature'] = b.temperature+n;
+            sensor_data['humidity'] = b.humidity;
+            console.log(JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
+            console.log('Data published!');n++;
+    }
 
 
+    for (var a in sensor.sensors) {
+            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
+            sensor_data['temperature'] = b.temperature+n;
+            sensor_data['humidity'] = b.humidity;
+            console.log(JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
+            console.log('Data published!');n++;
+    }
+     for (var a in sensor.sensors) {
+            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
+            sensor_data['temperature'] = b.temperature+n;
+            sensor_data['humidity'] = b.humidity;
+            console.log(JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+            client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),);
+            console.log('Data published!');n++;
+    }
 
 
 

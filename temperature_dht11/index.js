@@ -16,24 +16,32 @@ var sensor = {
     } ],
 
 };
-var n= 1;
+var n = 1;
+client.subscribe('messages');
 while(n<100){
-    client.on('connect', function () {
-        console.log('Client connected!');
-
-    
-             for (var a in sensor.sensors) {
-                    var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
-                    sensor_data['temperature'] = b.temperature+n;
-                    sensor_data['humidity'] = b.humidity;
-                    console.log(JSON.stringify(sensor_data));
-                    client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
-                    client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),1);
-                    console.log('Data published!');
-            }
-            n++;
-
-
-        client.end();
-    });
+    client.publish('messages', 'Current time is: ' + new Date());
+    n++;
 }
+
+client.on('message', function(topic, message) {
+  for (var a in sensor.sensors) {
+                  var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
+                  sensor_data['temperature'] = b.temperature+n;
+                  sensor_data['humidity'] = b.humidity;
+                  console.log(JSON.stringify(sensor_data));
+                  client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));
+                  client.publish('v1/devices/me/telemetry',JSON.stringify(sensor_data),1);
+                  console.log('Data published!');
+          }
+          n++;
+
+
+      client.end();
+});
+
+
+
+client.on('connect', function () {
+    console.log('Client connected!');
+
+});

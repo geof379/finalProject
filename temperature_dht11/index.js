@@ -27,9 +27,12 @@ var sensor = {
 client.on('connect', function () {
     console.log('Client connected!');
 
-    setTimeout(function() {
-        sensor.read();
-    }, 2000);
+    while(true){
+        setTimeout(function() {
+                sensor.read();
+            }, 2000);
+    }
+
 
     client.end();
 });

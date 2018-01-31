@@ -1,22 +1,22 @@
-const Raspi = require('raspi-io');
-const five = require('johnny-five');
-const board = new five.Board({
-  io: new Raspi()
-});
+var sensorLib = require("node-dht-sensor");
 
-board.on('ready', () => {
-
-  var thermometer = new five.Thermometer({
-      controller: "DHT11",
-      pin: "GPIO1"
-    });
-    while(true){
-      console.log(thermometer.celsius + "°C");
+var sensor = {
+    sensors: [ {
+        name: "DHT11",
+        type: 11,
+        pin: 18
+    } ],
+    read: function() {
+        for (var a in this.sensors) {
+            var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
+            console.log(this.sensors[a].name + ": " +
+              b.temperature.toFixed(1) + "°C, " +
+              b.humidity.toFixed(1) + "%");
+        }
+        setTimeout(function() {
+            sensor.read();
+        }, 2000);
     }
+};
 
-    thermometer.on("change", function() {
-      console.log(this.celsius + "°C");
-      // console.log("0x" + this.address.toString(16));
-    });
-
-});
+sensor.read();

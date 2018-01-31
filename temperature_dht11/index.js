@@ -7,7 +7,7 @@ var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
    username: '8v9od7LSarjmlorE9J4Y'
 });
 
-var sensor_data = [];
+var sensor_data = {};
 var sensor = {
     sensors: [ {
         name: "DHT11",

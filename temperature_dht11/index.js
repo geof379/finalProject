@@ -1,10 +1,10 @@
 var sensorLib = require("node-dht-sensor");
 var mqtt = require('mqtt');
 
-console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', 'DkiMfuhVrpaIWjdW5zbR');
+console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', '8v9od7LSarjmlorE9J4Y');
 
 var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
-    username: 'DkiMfuhVrpaIWjdW5zbR'
+    username: '8v9od7LSarjmlorE9J4Y'
 });
 
 var sensor_data = [];
@@ -19,13 +19,10 @@ client.on('connect', function () {
     console.log('Client connected!');
 
     while(true){
-        console.log("before");
         for (var a in sensor.sensors) {
-            console.log("reading");
             var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
-            console.log("publishing");
             client.publish('v1/devices/me/telemetry', JSON.stringify(sensor_data));
             console.log('Data published!');
         }

@@ -1,5 +1,9 @@
 var mqtt = require('mqtt');
-var client  = mqtt.connect('mqtt://test.mosquitto.org');
+console.log('Connecting to: %s using access token: %s', 'demo.thingsboard.io', '8v9od7LSarjmlorE9J4Y');
+
+var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
+    username: '8v9od7LSarjmlorE9J4Y'
+});
 
 client.on('connect', function () {
     client.subscribe('presence');

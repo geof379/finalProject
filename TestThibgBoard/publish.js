@@ -22,6 +22,7 @@ client.on('connect', function () {
         client.publish('v1/devices/me/attributes', "{'firmware_version':"+version+", 'serial_number':'SN-001'}");
         client.publish('v1/devices/me/telemetry', "{'temperature':"+temperature+", 'humidity':"+humidity+", 'active':"+ n%2===0+"}");
         console.log('Data published!');
+        n++;
     }
 
     client.end();

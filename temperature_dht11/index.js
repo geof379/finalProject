@@ -13,12 +13,16 @@ var sensor = {
         name: "DHT11",
         type: 11,
         pin: 18
-    } ],
-    read: function() {
+    } ]
+};
+client.on('connect', function () {
+    console.log('Client connected!');
+
+    while(true){
         console.log("before");
-        for (var a in this.sensors) {
+        for (var a in sensor.sensors) {
             console.log("reading");
-            var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
+            var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);
             console.log("publishing");
@@ -26,15 +30,6 @@ var sensor = {
             console.log('Data published!');
         }
         console.log("after");
-    }
-};
-client.on('connect', function () {
-    console.log('Client connected!');
-
-    while(true){
-        setTimeout(function() {
-                sensor.read();
-            }, 2000);
     }
 
 

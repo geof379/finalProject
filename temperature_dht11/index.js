@@ -24,7 +24,7 @@ var n= 0;
     while(n<1000){
          for (var a in sensor.sensors) {
                 var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
-                sensor_data['temperature'] = b.temperature.toFixed(2);
+                sensor_data['temperature'] = b.temperature.toFixed(2)+n/1000;
                 sensor_data['humidity'] = b.humidity.toFixed(2);
                 console.log(JSON.stringify(sensor_data));
                 client.publish('v1/devices/me/attributes', JSON.stringify(sensor_data));

@@ -25,7 +25,7 @@ client.on('connect', function () {
     //client.end();
 });
 
-read() {
+function read() {
     for (var a in this.sensors) {
         var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
         sensor_data['temperature'] = b.temperature.toFixed(2);

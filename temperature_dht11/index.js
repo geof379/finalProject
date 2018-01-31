@@ -16,12 +16,12 @@ var sensor = {
     } ],
 
 };
-var n= 1;
+var n= 8;
 
     client.on('connect', function () {
         console.log('Client connected!');
 
-while(true){
+
     for (var a in sensor.sensors) {
                         var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);
                         sensor_data['temperature'] = b.temperature+n;
@@ -32,8 +32,8 @@ while(true){
                         console.log('Data published!');
                 }
                 n++;
-                setTimeout(function(){},2000);
-}
+
+
 
 
 

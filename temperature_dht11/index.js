@@ -7,7 +7,7 @@ var client  = mqtt.connect('mqtt://'+ 'demo.thingsboard.io',{
     username: 'DkiMfuhVrpaIWjdW5zbR'
 });
 
-var sensor_data;
+var sensor_data = [];
 var sensor = {
     sensors: [ {
         name: "DHT11",
@@ -16,7 +16,6 @@ var sensor = {
     } ],
     read: function() {
         for (var a in this.sensors) {
-        console.log(a);
             var b = sensorLib.read(this.sensors[a].type, this.sensors[a].pin);
             sensor_data['temperature'] = b.temperature.toFixed(2);
             sensor_data['humidity'] = b.humidity.toFixed(2);

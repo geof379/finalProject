@@ -20,7 +20,7 @@ var sensor = {
 
 client.on('connect', function () {
     console.log('Client connected!');
-
+var n= 0;
     while(n<1000){
          for (var a in sensor.sensors) {
                 var b = sensorLib.read(sensor.sensors[a].type, sensor.sensors[a].pin);

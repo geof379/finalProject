@@ -27,6 +27,8 @@
      sudo npm install crc --g
 ####install node-red based64
      sudo npm install node-red-node-base64 --g
+####install node-red 
+     sudo npm install -g node-red
 ####install node-red senseHat Simulator
      npm install node-red-node-pi-sense-hat-simulator
 ####Install firebase
